@@ -1,6 +1,8 @@
 ﻿  LinkedList.c
-D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(23,18): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
-D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(45,19): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
-D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(47,19): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
-D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(58,18): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(30,18): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(44,18): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(65,22): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(82,28): warning C4133: '!=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(83,18): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
+D:\Users\inchangson\source\DataStructure\LinkedList\LinkedList\LinkedList.c(101,21): warning C4133: '=': 'data *'과(와) 'data *' 사이의 형식이 호환되지 않습니다.
   LinkedList.vcxproj -> D:\Users\inchangson\source\DataStructure\LinkedList\Debug\LinkedList.exe
