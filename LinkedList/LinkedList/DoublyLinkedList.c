@@ -1,3 +1,5 @@
+
+#if 0
 //doubly linked list implement
 #include <cstdio>
 #include <cstdlib>
@@ -182,3 +184,4 @@ int main() {
 	return 0;
 
 }
+#endif

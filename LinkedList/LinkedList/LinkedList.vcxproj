@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DoublyLinkedList.c" />
+    <ClCompile Include="programmers_print.cpp" />
     <ClCompile Include="SinglyLinkedList.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
