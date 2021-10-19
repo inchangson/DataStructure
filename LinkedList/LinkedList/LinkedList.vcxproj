@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="algospot_josephus.cpp" />
     <ClCompile Include="DoublyLinkedList.c" />
     <ClCompile Include="programmers_print.cpp" />
     <ClCompile Include="SinglyLinkedList.c" />
