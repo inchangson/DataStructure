@@ -77,7 +77,7 @@ void kill_soldiers(int cnt, int steps) {
 	soldier* cur_node = g_head;
 	soldier* next_node = NULL;
 	while (cnt > 2) {
-		next_node = get_next_turn(cur_node, steps);
+		next_node = get_next_turn(cur_node, steps % cnt);
 		remove_data_with_ptr(cur_node);
 		cur_node = next_node;
 		--cnt;
