@@ -47,13 +47,16 @@ int Cmp(Elem* e1, Elem* e2){
 }
 
 void mySwap(Elem* e1, Elem*e2){
-	Elem* tmp;
-	tmp->idx = e1->idx;
-	tmp->num = e1->num;
+	Elem tmp;
+	tmp.idx = e1->idx;
+	tmp.num = e1->num;
+	
 	e1->idx = e2->idx;
-	e1->idx = e2->num;
-	e2->idx = tmp->idx;
-	e2->num = tmp->num;
+	e1->num = e2->num;
+	
+	e2->idx = tmp.idx;
+	e2->num = tmp.num;
+	
 }
 
 int Push(Heap* h, Elem e){
@@ -61,16 +64,20 @@ int Push(Heap* h, Elem e){
 	
 	h->data[++h->sz] = e;
 	
+	int parent;
 	int cur = h->sz;
+	//printf("\n======Push======\n");
 	while(cur != TOP){
-		int parent = cur / 2;
-		if(Cmp(&h->data[parent], &h->data[cur]) > 1){
+		parent = cur / 2;
+		//printf("cur : %d, val : %d parent : %d parent_value : %d\n", cur, h->data[cur].idx, parent, h->data[parent].idx);
+		if(Cmp(&h->data[parent], &h->data[cur]) == 1){
 			mySwap(&h->data[parent], &h->data[cur]);
 			cur = parent;
 		}else{
 			break;
 		}
 	}
+	//printf("===========================\n");
 }
 
 Elem Pop(Heap* h, bool* bRslt){
@@ -80,39 +87,35 @@ Elem Pop(Heap* h, bool* bRslt){
 		return tmp;//tmp;
 	}
 	*bRslt = true;
+	
 	Elem retElem = h->data[TOP];
 	h->data[TOP] = h->data[h->sz--];
-	//h->data[h->sz] = 0; h->sz--;
 	
 	int cur = TOP;
 	int child1, child2;
+	int rsltChild;
 	while(cur < h->sz){
 		child1 = cur * 2;
 		child2 = cur * 2 + 1;
 		
-		//rsltChild만 정하고 최종으로 비교만 해준다. 
-		rsltChild;
 		if(child1 > h->sz){
 			break;
 		}else if(child2 > h->sz){
-			//child1 만 비교
-			if(Cmp(&h->data[cur], &h->data[child1]) == 1){
-				mySwap(&h->data[cur], &h->data[child1]);
-				cur = child1;
-			}else{
-				break;
-			}
+			rsltChild = child1;
 		}else{
-			//둘 다 비교
-			if(Cmp(&h->data[cur], &h->data[child1]) == 1){
-				mySwap(&h->data[cur], &h->data[child1]);
-				cur = child1;
-			}else if(Cmp(&h->data[cur], &h->data[child2]) == 1){
-				mySwap(&h->data[cur], &h->data[child2]);
-				cur = child2;
+			int bCmpRslt = Cmp(&h->data[child1], &h->data[child2]);
+			if( bCmpRslt == 1){
+				rsltChild = child2;
 			}else{
-				break;
+				rsltChild = child1;
 			}
+		}
+		
+		if(Cmp(&h->data[cur], &h->data[rsltChild]) == 1){
+			mySwap(&h->data[cur], &h->data[rsltChild]);
+			cur = rsltChild;
+		}else{
+			break;
 		}
 	}
 	
@@ -120,13 +123,15 @@ Elem Pop(Heap* h, bool* bRslt){
 }
 
 void Free(Heap* h){
+	printf("\n===========freeHeap===============\n");
+	
 	free(h->data);
 }
 
 void printHeap(Heap* h){
-	printf("\n===========heap===============\n");
+	printf("\n===========printHeap===============\n");
 	for(int idx = 1; idx <= h->sz; ++idx){
-		if(idx % 5 == 0)	printf("\n");
+		if((idx - 1) % 5 == 0)	printf("\n");
 		printf("(%5d, %5d)\t", h->data[idx].idx, h->data[idx].num);
 	}
 	printf("\n");
@@ -147,8 +152,10 @@ int main(){
 		for(int i = 1; i <= N; ++i){
 			Elem val;
 			val.num = i;
-			srand(i);
+			//srand(i);
 			val.idx = rand() % (10 * N);
+			
+			//val.idx  = 10 - i;
 			Push(&h, val);
 			testData[rp++] = val;
 		}
@@ -160,17 +167,19 @@ int main(){
 		}
 		printf("\n");
 		
-		printHeap(&h);
-		printf("\n======================\n");
-		/*
+		//printHeap(&h);
+		
+		printf("\n=========POP TEST=========\n");
+		int idx = 0;
 		while(!IsEmpty(&h)){
+			if(idx++ % 5 == 0)	printf("\n");
 			bool bRslt = false;
 			Elem tmp = Pop(&h, &bRslt);
 			if(bRslt)
 				printf("(%5d, %5d)\t", tmp.idx, tmp.num);
 			else
 				printf("ASSERTION: POP FAIL\n");
-		}*/			
+		}		
 		free(testData);
 		Free(&h);
 	}
